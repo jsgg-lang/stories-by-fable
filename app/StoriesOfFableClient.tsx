@@ -9,7 +9,6 @@ const WITNESS_STORAGE_KEY = "fable-witness";
 /** Blank, not-yet-written volumes that fill out the shelves. */
 const EMPTY_SPINES = [
   { leather: "#3a3348", heightRem: 13.5 },
-  { leather: "#513a33", heightRem: 14.5 },
   { leather: "#2e2f42", heightRem: 15 },
 ];
 
