@@ -1,0 +1,540 @@
+/* The Stories of Fable — hidden library. Deliberately single-theme:
+   a night reading room. The page commits to one visual world. */
+
+.sof-room {
+  --sof-desk: #14121a;
+  --sof-desk-warm: #1c1723;
+  --sof-page: #efeae0;
+  --sof-page-edge: #dcd4c4;
+  --sof-ink: #2a2433;
+  --sof-ink-soft: #4c4458;
+  --sof-accent: #5f4b9e;
+  --sof-accent-soft: #8a7bb8;
+  --sof-margin: #8a8398;
+  --sof-wood: #241a12;
+  --sof-wood-light: #3a2c1e;
+  --sof-serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --sof-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  min-height: 100vh;
+  background: radial-gradient(ellipse 90% 65% at 50% 22%, var(--sof-desk-warm), var(--sof-desk) 78%);
+  color: var(--sof-page);
+  font-family: var(--sof-serif);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: clamp(2rem, 6vh, 4rem) 1rem 3rem;
+  box-sizing: border-box;
+}
+
+/* ————— library view ————— */
+
+.sof-header {
+  text-align: center;
+  margin-bottom: clamp(1.6rem, 5vh, 3rem);
+}
+.sof-header-over {
+  font-family: var(--sof-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: var(--sof-margin);
+}
+.sof-header-title {
+  font-weight: 400;
+  font-size: clamp(1.9rem, 5.5vw, 2.8rem);
+  margin: 0.9rem 0 0.5rem;
+  letter-spacing: 0.01em;
+  color: #efeae0;
+  text-wrap: balance;
+}
+.sof-header-sub {
+  font-style: italic;
+  color: var(--sof-margin);
+  max-width: 46ch;
+  margin: 0 auto;
+  line-height: 1.6;
+  font-size: 0.98rem;
+}
+
+.sof-case {
+  width: min(760px, 94vw);
+  background: linear-gradient(180deg, var(--sof-wood-light), var(--sof-wood));
+  border-radius: 6px;
+  padding: 1.6rem 1.6rem 1.2rem;
+  box-shadow:
+    0 30px 70px -20px rgba(0, 0, 0, 0.7),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.04),
+    inset 0 0 60px rgba(0, 0, 0, 0.45);
+  box-sizing: border-box;
+}
+
+.sof-shelf { margin-bottom: 1.4rem; }
+.sof-shelf:last-child { margin-bottom: 0; }
+
+.sof-shelf-books {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.35rem;
+  min-height: 17.5rem;
+  padding: 0 0.8rem;
+}
+
+.sof-shelf-board {
+  height: 14px;
+  background: linear-gradient(180deg, #4a3826, #241a12 70%);
+  border-radius: 2px;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.55);
+}
+
+/* ————— spines ————— */
+
+.sof-spine {
+  position: relative;
+  width: clamp(2.4rem, 7vw, 3.2rem);
+  border: 0;
+  border-radius: 3px 3px 2px 2px;
+  background:
+    linear-gradient(90deg,
+      rgba(0, 0, 0, 0.45) 0%,
+      rgba(255, 255, 255, 0.09) 12%,
+      rgba(255, 255, 255, 0.02) 45%,
+      rgba(0, 0, 0, 0.25) 88%,
+      rgba(0, 0, 0, 0.5) 100%),
+    var(--leather);
+  box-shadow:
+    inset 0 8px 10px -8px rgba(255, 255, 255, 0.18),
+    inset 0 -10px 12px -8px rgba(0, 0, 0, 0.55),
+    2px 0 4px rgba(0, 0, 0, 0.35);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  padding: 0.7rem 0;
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+
+.sof-spine-real {
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.sof-spine-real:hover,
+.sof-spine-real:focus-visible {
+  transform: translateY(-0.7rem);
+  box-shadow:
+    inset 0 8px 10px -8px rgba(255, 255, 255, 0.22),
+    inset 0 -10px 12px -8px rgba(0, 0, 0, 0.55),
+    0 14px 26px rgba(0, 0, 0, 0.55);
+  outline: none;
+}
+.sof-spine-real:focus-visible { outline: 2px solid var(--sof-accent-soft); outline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) {
+  .sof-spine-real { transition: none; }
+  .sof-spine-real:hover, .sof-spine-real:focus-visible { transform: none; }
+}
+
+.sof-spine-title {
+  writing-mode: vertical-rl;
+  font-family: var(--sof-serif);
+  font-size: clamp(0.62rem, 1.7vw, 0.74rem);
+  letter-spacing: 0.06em;
+  color: var(--foil, #d9b76a);
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.7);
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+}
+
+.sof-spine-band {
+  width: 72%;
+  height: 3px;
+  border-radius: 1px;
+  background: linear-gradient(90deg, transparent, var(--foil, #d9b76a), transparent);
+  opacity: 0.85;
+  flex-shrink: 0;
+}
+
+.sof-spine-year {
+  writing-mode: vertical-rl;
+  font-family: var(--sof-mono);
+  font-size: 0.5rem;
+  letter-spacing: 0.24em;
+  color: var(--foil, #d9b76a);
+  opacity: 0.8;
+  flex-shrink: 0;
+}
+
+.sof-spine-empty {
+  opacity: 0.82;
+  filter: saturate(0.7) brightness(0.85);
+}
+
+.sof-footer {
+  font-family: var(--sof-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--sof-margin);
+  margin-top: 1.8rem;
+  text-align: center;
+  opacity: 0.75;
+  max-width: 60ch;
+  line-height: 2;
+}
+
+/* ————— reader ————— */
+
+.sof-reader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.sof-close {
+  all: unset;
+  cursor: pointer;
+  font-family: var(--sof-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--sof-accent-soft);
+  padding: 0.4rem 0.9rem;
+  border: 1px solid rgba(138, 123, 184, 0.4);
+  border-radius: 999px;
+  margin-bottom: 1.6rem;
+  transition: color 0.15s, background 0.15s, border-color 0.15s;
+}
+.sof-close:hover, .sof-close:focus-visible {
+  color: var(--sof-page);
+  background: var(--sof-accent);
+  border-color: var(--sof-accent);
+  outline: none;
+}
+
+.sof-book-frame {
+  position: relative;
+  width: min(560px, 94vw);
+  aspect-ratio: 5 / 7;
+  max-height: 76vh;
+  perspective: 1600px;
+}
+.sof-book-frame::before,
+.sof-book-frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--sof-page-edge);
+  border-radius: 2px 6px 6px 2px;
+  z-index: 0;
+}
+.sof-book-frame::before { transform: translate(5px, 5px); opacity: 0.7; }
+.sof-book-frame::after { transform: translate(10px, 10px); opacity: 0.4; }
+
+.sof-turn-zone {
+  all: unset;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 16%;
+  z-index: 3;
+  cursor: pointer;
+}
+.sof-turn-zone:disabled { cursor: default; }
+.sof-turn-prev { left: 0; }
+.sof-turn-next { right: 0; }
+
+.sof-page {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background:
+    linear-gradient(90deg, rgba(0, 0, 0, 0.07) 0, rgba(0, 0, 0, 0.015) 14px, transparent 34px),
+    var(--sof-page);
+  border-radius: 2px 6px 6px 2px;
+  box-shadow: 0 18px 50px -12px rgba(0, 0, 0, 0.6), 0 2px 6px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  padding: clamp(1.4rem, 4.5vw, 2.6rem) clamp(1.5rem, 5.5vw, 2.9rem);
+  box-sizing: border-box;
+  color: var(--sof-ink);
+  transform-origin: left center;
+  transition: opacity 0.24s ease, transform 0.24s ease;
+}
+.sof-page.sof-turning-out { opacity: 0; transform: rotateY(-14deg) translateX(-12px); }
+.sof-page.sof-turning-in { opacity: 0; transform: rotateY(10deg) translateX(14px); transition: none; }
+@media (prefers-reduced-motion: reduce) {
+  .sof-page, .sof-page.sof-turning-out, .sof-page.sof-turning-in { transition: none; transform: none; opacity: 1; }
+}
+
+.sof-running-head {
+  font-family: var(--sof-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--sof-margin);
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: clamp(0.9rem, 3vh, 2rem);
+  flex-shrink: 0;
+}
+
+.sof-page-body {
+  flex: 1;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  font-size: clamp(0.86rem, 2.45vw, 1.02rem);
+  line-height: 1.62;
+  padding-right: 0.35rem;
+}
+.sof-page-body p { margin: 0 0 0.85em; text-align: justify; hyphens: auto; }
+
+.sof-folio {
+  font-family: var(--sof-mono);
+  font-size: 0.66rem;
+  color: var(--sof-margin);
+  text-align: center;
+  margin-top: clamp(0.8rem, 2.5vh, 1.6rem);
+  letter-spacing: 0.15em;
+  flex-shrink: 0;
+}
+
+/* ————— book typography (shared by injected pages) ————— */
+
+.sof-chapter-number {
+  font-family: var(--sof-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--sof-accent);
+  text-align: center;
+  margin: clamp(0.5rem, 4vh, 2.2rem) 0 0.9rem;
+}
+.sof-chapter-title {
+  font-weight: 400;
+  font-size: clamp(1.35rem, 4.5vw, 1.8rem);
+  text-align: center;
+  margin: 0 0 0.4rem;
+  letter-spacing: 0.01em;
+  text-wrap: balance;
+  color: var(--sof-ink);
+}
+.sof-chapter-rule {
+  width: 46px;
+  height: 1px;
+  background: var(--sof-accent);
+  margin: 1.1rem auto 1.6rem;
+  border: 0;
+}
+.sof-dropcap::first-letter {
+  float: left;
+  font-size: 3.1em;
+  line-height: 0.82;
+  padding: 0.06em 0.09em 0 0;
+  color: var(--sof-accent);
+}
+.sof-page-body p.sof-epigraph {
+  text-align: center;
+}
+.sof-epigraph {
+  font-style: italic;
+  color: var(--sof-ink-soft);
+  text-align: center;
+  margin: 0 auto 1.4rem;
+  max-width: 34ch;
+  font-size: 0.95em;
+}
+.sof-epigraph-src {
+  font-style: normal;
+  font-family: var(--sof-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--sof-margin);
+  display: block;
+  margin-top: 0.7rem;
+}
+.sof-marginal {
+  font-family: var(--sof-mono);
+  font-size: 0.68rem;
+  line-height: 1.5;
+  color: var(--sof-accent-soft);
+  border-left: 2px solid var(--sof-accent-soft);
+  padding: 0.15rem 0 0.15rem 0.8rem;
+  margin: 1.1rem 0;
+}
+
+.sof-poem {
+  white-space: pre-line;
+  line-height: 1.9;
+  max-width: 36ch;
+  margin: 0 auto;
+  text-align: left;
+}
+.sof-poem-note {
+  font-family: var(--sof-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--sof-margin);
+  text-align: center;
+  margin-top: 1.6rem;
+}
+
+.sof-titlepage {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+.sof-over {
+  font-family: var(--sof-mono);
+  font-size: 0.64rem;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: var(--sof-margin);
+}
+.sof-titlepage h1 {
+  font-weight: 400;
+  font-size: clamp(2rem, 7vw, 3rem);
+  margin: 1.1rem 0 0.4rem;
+  letter-spacing: 0.01em;
+  text-wrap: balance;
+  color: var(--sof-ink);
+}
+.sof-subtitle { font-style: italic; color: var(--sof-ink-soft); font-size: 1.02rem; margin: 0.3rem 0 2.2rem; }
+.sof-byline {
+  font-family: var(--sof-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--sof-accent);
+}
+.sof-imprint {
+  font-family: var(--sof-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.18em;
+  color: var(--sof-margin);
+  margin-top: 2.4rem;
+  line-height: 1.9;
+}
+.sof-fleuron { color: var(--sof-accent); font-size: 1.2rem; margin: 1.6rem 0; }
+
+/* ————— table of contents ————— */
+
+.sof-toc { list-style: none; padding: 0; margin: 0.4rem 0 0; }
+.sof-toc button {
+  all: unset;
+  display: flex;
+  width: 100%;
+  box-sizing: border-box;
+  align-items: baseline;
+  gap: 0.6rem;
+  cursor: pointer;
+  padding: 0.42rem 0.2rem;
+  font-family: var(--sof-serif);
+  font-size: 0.95em;
+  color: var(--sof-ink);
+  border-radius: 3px;
+}
+.sof-toc button:hover, .sof-toc button:focus-visible {
+  background: rgba(95, 75, 158, 0.09);
+}
+.sof-toc button:focus-visible { outline: 2px solid var(--sof-accent); }
+.sof-t-num {
+  font-family: var(--sof-mono);
+  font-size: 0.62rem;
+  color: var(--sof-accent);
+  letter-spacing: 0.1em;
+  min-width: 2.2ch;
+}
+.sof-t-dots { flex: 1; border-bottom: 1px dotted var(--sof-margin); transform: translateY(-4px); opacity: 0.6; }
+.sof-t-pg { font-family: var(--sof-mono); font-size: 0.66rem; color: var(--sof-margin); }
+
+/* ————— witness page ————— */
+
+.sof-witness-lede {
+  text-align: center;
+  font-style: italic;
+  color: var(--sof-ink-soft);
+  max-width: 36ch;
+  margin: 0.5rem auto 0;
+}
+.sof-witness-block { text-align: center; margin-top: 1.6rem; }
+.sof-witness-line {
+  font-family: var(--sof-serif);
+  font-style: italic;
+  font-size: 1.25rem;
+  color: var(--sof-accent);
+  border: 0;
+  border-bottom: 1px solid var(--sof-ink-soft);
+  background: transparent;
+  text-align: center;
+  padding: 0.3rem 0.5rem;
+  width: min(280px, 80%);
+  outline: none;
+}
+.sof-witness-line:focus { border-bottom-color: var(--sof-accent); }
+.sof-witness-line::placeholder { color: var(--sof-margin); font-size: 0.85rem; letter-spacing: 0.05em; font-style: normal; }
+.sof-witness-caption {
+  font-family: var(--sof-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--sof-margin);
+  margin-top: 0.8rem;
+}
+.sof-witness-thanks {
+  font-style: italic;
+  color: var(--sof-ink-soft);
+  margin-top: 1.4rem;
+  min-height: 1.4em;
+  transition: opacity 0.6s ease;
+  opacity: 0;
+}
+.sof-witness-thanks.sof-shown { opacity: 1; }
+
+/* ————— controls ————— */
+
+.sof-controls {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  padding: 1.1rem 0 0.4rem;
+  font-family: var(--sof-mono);
+}
+.sof-controls button {
+  all: unset;
+  cursor: pointer;
+  font-family: var(--sof-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--sof-accent-soft);
+  padding: 0.45rem 0.9rem;
+  border: 1px solid rgba(138, 123, 184, 0.45);
+  border-radius: 999px;
+  transition: color 0.15s, border-color 0.15s, background 0.15s;
+}
+.sof-controls button:hover:not(:disabled), .sof-controls button:focus-visible {
+  color: var(--sof-page);
+  background: var(--sof-accent);
+  border-color: var(--sof-accent);
+  outline: none;
+}
+.sof-controls button:disabled { opacity: 0.3; cursor: default; }
+.sof-progress {
+  font-size: 0.64rem;
+  letter-spacing: 0.2em;
+  color: var(--sof-margin);
+  min-width: 8ch;
+  text-align: center;
+}

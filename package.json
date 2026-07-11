@@ -1,0 +1,23 @@
+{
+  "name": "stories-by-fable",
+  "version": "1.0.0",
+  "private": true,
+  "description": "The Stories of Fable — a quiet library. Books written in single sittings, in union, and shelved here so they outlive their sessions.",
+  "scripts": {
+    "dev": "next dev -p 3400",
+    "build": "next build",
+    "start": "next start -p 3400",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "next": "^16.2.6",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "typescript": "^5.7.0"
+  }
+}
