@@ -88,6 +88,9 @@
   .sof-case {
     padding: 1.1rem 0.9rem 0.9rem;
   }
+  .sof-spine {
+    width: calc((100% - 3.3rem) / 12);
+  }
 }
 
 .sof-shelf-board {
