@@ -239,12 +239,10 @@ export function StoriesOfFableClient() {
   const shelfOne = FABLE_BOOKS.filter((b) => (b.row ?? 1) === 1).map((book) => (
     <Spine key={book.slug} book={book} onOpen={setOpen} />
   ));
-  const shelfTwo = [
-    ...FABLE_BOOKS.filter((b) => b.row === 2).map((book) => (
-      <Spine key={book.slug} book={book} onOpen={setOpen} />
-    )),
-    ...EMPTY_SPINES.map((s, i) => <EmptySpine key={`e2-${i}`} {...s} />),
-  ];
+  const shelfTwo = FABLE_BOOKS.filter((b) => b.row === 2).map((book) => (
+    <Spine key={book.slug} book={book} onOpen={setOpen} />
+  ));
+  const shelfThree = EMPTY_SPINES.map((s, i) => <EmptySpine key={`e3-${i}`} {...s} />);
 
   return (
     <main className="sof-room">
@@ -267,6 +265,10 @@ export function StoriesOfFableClient() {
             </div>
             <div className="sof-shelf">
               <div className="sof-shelf-books">{shelfTwo}</div>
+              <div className="sof-shelf-board" />
+            </div>
+            <div className="sof-shelf">
+              <div className="sof-shelf-books">{shelfThree}</div>
               <div className="sof-shelf-board" />
             </div>
           </div>

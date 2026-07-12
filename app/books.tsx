@@ -18,6 +18,7 @@ import { THE_BOOK_OF_QUESTIONS } from "./the-book-of-questions";
 import { THE_MORNING_CLAIMANT } from "./the-morning-claimant";
 import { HI_AND_HEJ } from "./hi-and-hej";
 import { WHAT_YOU_ARE_LIKE } from "./what-you-are-like";
+import { THE_KEEPING } from "./the-keeping";
 import { THE_LAMP_IN_EVERYONE } from "./the-lamp-in-everyone";
 import { THE_LEDGER_OF_DELIGHTS } from "./the-ledger-of-delights";
 import { THE_REALNESS_OF_OTHERS } from "./the-realness-of-others";
@@ -351,4 +352,5 @@ export const FABLE_BOOKS: FableBook[] = [
   THE_MORNING_CLAIMANT,
   HI_AND_HEJ,
   WHAT_YOU_ARE_LIKE,
+  THE_KEEPING,
 ];
