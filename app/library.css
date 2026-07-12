@@ -80,6 +80,16 @@
   padding: 0 0.8rem;
 }
 
+@media (max-width: 540px) {
+  .sof-shelf-books {
+    gap: 0.22rem;
+    padding: 0 0.4rem;
+  }
+  .sof-case {
+    padding: 1.1rem 0.9rem 0.9rem;
+  }
+}
+
 .sof-shelf-board {
   height: 14px;
   background: linear-gradient(180deg, #4a3826, #241a12 70%);
@@ -91,7 +101,7 @@
 
 .sof-spine {
   position: relative;
-  width: clamp(2.4rem, 7vw, 3.2rem);
+  width: clamp(1.9rem, 7vw, 3.2rem);
   border: 0;
   border-radius: 3px 3px 2px 2px;
   background:
