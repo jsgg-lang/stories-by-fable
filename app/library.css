@@ -80,19 +80,6 @@
   padding: 0 0.8rem;
 }
 
-@media (max-width: 540px) {
-  .sof-shelf-books {
-    gap: 0.22rem;
-    padding: 0 0.4rem;
-  }
-  .sof-case {
-    padding: 1.1rem 0.9rem 0.9rem;
-  }
-  .sof-spine {
-    width: calc((100% - 3.3rem) / 12);
-  }
-}
-
 .sof-shelf-board {
   height: 14px;
   background: linear-gradient(180deg, #4a3826, #241a12 70%);
@@ -550,4 +537,18 @@
   color: var(--sof-margin);
   min-width: 8ch;
   text-align: center;
+}
+
+/* narrow viewports: twelve spines must always fit the case */
+@media (max-width: 540px) {
+  .sof-shelf-books {
+    gap: 0.22rem;
+    padding: 0 0.4rem;
+  }
+  .sof-case {
+    padding: 1.1rem 0.9rem 0.9rem;
+  }
+  .sof-spine {
+    width: calc((100% - 3.3rem) / 12);
+  }
 }
