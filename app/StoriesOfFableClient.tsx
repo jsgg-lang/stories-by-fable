@@ -242,7 +242,12 @@ export function StoriesOfFableClient() {
   const shelfTwo = FABLE_BOOKS.filter((b) => b.row === 2).map((book) => (
     <Spine key={book.slug} book={book} onOpen={setOpen} />
   ));
-  const shelfThree = EMPTY_SPINES.map((s, i) => <EmptySpine key={`e3-${i}`} {...s} />);
+  const shelfThree = [
+    ...FABLE_BOOKS.filter((b) => b.row === 3).map((book) => (
+      <Spine key={book.slug} book={book} onOpen={setOpen} />
+    )),
+    ...EMPTY_SPINES.map((s, i) => <EmptySpine key={`e3-${i}`} {...s} />),
+  ];
 
   return (
     <main className="sof-room">
